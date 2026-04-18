@@ -1,0 +1,126 @@
+#
+# ---- INPUTS: vom Shelly 3EM 3 Phasen Sensor----
+# 
+	
+[[inputs.http]]
+urls = ["http://192.168.0.6/rpc/Shelly.GetStatus"]
+method = "GET"
+interval = "10s"
+timeout  = "2s"
+data_format = "json_v2"
+
+  # Optional: Falls Shelly ein self-signed Zertifikat hätte (hier HTTP, daher egal)
+  # insecure_skip_verify = true
+
+[[inputs.http.json_v2]]
+measurement_name = "home_consumption"
+
+# Zeitstempel aus sys.unixtime verwenden
+timestamp_path     = "sys.unixtime"
+timestamp_format   = "unix"
+timestamp_timezone = "UTC"
+
+    # -------- Tags (Identifikation des Geräts / WLAN) --------
+
+[inputs.http.tags]
+location = "muc"
+device_class = "energy"
+domain = "sensor"
+friendly_name = "Munich Home consumption"
+
+
+# -------- Felder: EM-Messwerte (em:0) --------
+# Hinweis: "em:0" ist ein ganz normaler JSON-Key; Doppelpunkt ist für GJSON kein Sonderzeichen.
+ 
+[[inputs.http.json_v2.field]]
+path = "em:0.a_act_power"
+type = "float"
+
+[[inputs.http.json_v2.field]]
+path = "em:0.b_act_power"
+type = "float"
+
+[[inputs.http.json_v2.field]]
+path = "em:0.c_act_power"
+type = "float"
+   
+[[inputs.http.json_v2.field]]
+path = "em:0.total_act_power"
+type = "float"
+
+    # n_current ist bei dir null -> lieber nicht als Feld erzwingen,
+    # sonst muss man mit optional=true arbeiten.
+
+    # -------- Felder: Energiezähler (emdata:0) --------
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.a_total_act_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.a_total_act_ret_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.b_total_act_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.b_total_act_ret_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.c_total_act_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.c_total_act_ret_energy"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.total_act"
+  type = "float"
+
+[[inputs.http.json_v2.field]]
+  path = "emdata:0.total_act_ret"
+  type = "float"
+
+
+
+    # -------- Felder: Temperatur des Geräts (temperature:0) --------
+
+    [[inputs.http.json_v2.field]]
+      path = "temperature:0.tC"
+      rename = "temperature_c"
+      type = "float"
+
+    [[inputs.http.json_v2.field]]
+      path = "temperature:0.tF"
+      rename = "temperature_f"
+      type = "float"
+
+    # -------- Felder: System-Infos (RAM, Uptime, etc.) --------
+
+    [[inputs.http.json_v2.field]]
+      path = "sys.uptime"
+      type = "int"
+
+    [[inputs.http.json_v2.field]]
+      path = "sys.ram_size"
+      type = "int"
+
+    [[inputs.http.json_v2.field]]
+      path = "sys.ram_free"
+      type = "int"
+
+    [[inputs.http.json_v2.field]]
+      path = "sys.fs_size"
+      type = "int"
+
+    [[inputs.http.json_v2.field]]
+      path = "sys.fs_free"
+      type = "int"
+
+    [[inputs.http.json_v2.field]]
+      path = "wifi.rssi"
+      type = "int"
