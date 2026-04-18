@@ -51,15 +51,15 @@ type = "float"
     # n_current ist bei dir null -> lieber nicht als Feld erzwingen,
     # sonst muss man mit optional=true arbeiten.
 
-    # -------- Felder: Energiezähler (emdata:0) --------
+# -------- Felder: Energiezähler (emdata:0) --------
 
 [[inputs.http.json_v2.field]]
   path = "emdata:0.a_total_act_energy"
   type = "float"
 
-[[inputs.http.json_v2.field]]
-  path = "emdata:0.a_total_act_ret_energy"
-  type = "float"
+# [[inputs.http.json_v2.field]]
+  # path = "emdata:0.a_total_act_ret_energy"
+  # type = "float"
 
 [[inputs.http.json_v2.field]]
   path = "emdata:0.b_total_act_energy"
@@ -73,9 +73,9 @@ type = "float"
   path = "emdata:0.c_total_act_energy"
   type = "float"
 
-[[inputs.http.json_v2.field]]
-  path = "emdata:0.c_total_act_ret_energy"
-  type = "float"
+# [[inputs.http.json_v2.field]]
+#   path = "emdata:0.c_total_act_ret_energy"
+#   type = "float"
 
 [[inputs.http.json_v2.field]]
   path = "emdata:0.total_act"
