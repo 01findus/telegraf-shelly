@@ -1,8 +1,15 @@
-This telegraf.conf section shows how-to parse the Energie Values from:
-Shelly 3EM via: http://<your-ip>/rpc/Shelly.GetStatus and
-Shelly pm mini via: via: http://<your-ip>/rpc/Shelly.GetStatus
+# Telegraf json_v2 Parser for Shelly Energy Values
 
-Example json for Shelly 3EM:
+This Telegraf configuration demonstrates how to parse energy values from:
+
+- **Shelly 3EM** via `http://<your-ip>/rpc/Shelly.GetStatus`
+- **Shelly PM Mini** via `http://<your-ip>/rpc/Shelly.GetStatus` (same RPC endpoint, different payload structure per device)[web:62][web:64]
+
+Below is an example JSON response for a **Shelly 3EM**.
+
+## Example JSON: Shelly 3EM (`Shelly.GetStatus`)
+
+```json
 {
   "ble": {},
   "bthome": {},
@@ -35,7 +42,7 @@ Example json for Shelly 3EM:
     "total_aprt_power": 324.873,
     "user_calibrated_phase": []
   },
-  "emdata:0": {
+  "em0": {
     "id": 0,
     "a_total_act_energy": 432377.89,
     "a_total_act_ret_energy": 117.49,
@@ -50,8 +57,8 @@ Example json for Shelly 3EM:
   "mqtt": {
     "connected": false
   },
-    
   "ws": {
     "connected": false
   }
 }
+
