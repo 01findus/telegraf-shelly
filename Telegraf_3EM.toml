@@ -89,38 +89,38 @@ type = "float"
 
     # -------- Felder: Temperatur des Geräts (temperature:0) --------
 
-    [[inputs.http.json_v2.field]]
-      path = "temperature:0.tC"
-      rename = "temperature_c"
-      type = "float"
+    # [[inputs.http.json_v2.field]]
+    #   path = "temperature:0.tC"
+    #   rename = "temperature_c"
+    #   type = "float"
 
-    [[inputs.http.json_v2.field]]
-      path = "temperature:0.tF"
-      rename = "temperature_f"
-      type = "float"
+    # [[inputs.http.json_v2.field]]
+    #   path = "temperature:0.tF"
+    #   rename = "temperature_f"
+    #   type = "float"
 
-    # -------- Felder: System-Infos (RAM, Uptime, etc.) --------
+    # # -------- Felder: System-Infos (RAM, Uptime, etc.) --------
 
-    [[inputs.http.json_v2.field]]
-      path = "sys.uptime"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "sys.uptime"
+    #   type = "int"
 
-    [[inputs.http.json_v2.field]]
-      path = "sys.ram_size"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "sys.ram_size"
+    #   type = "int"
 
-    [[inputs.http.json_v2.field]]
-      path = "sys.ram_free"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "sys.ram_free"
+    #   type = "int"
 
-    [[inputs.http.json_v2.field]]
-      path = "sys.fs_size"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "sys.fs_size"
+    #   type = "int"
 
-    [[inputs.http.json_v2.field]]
-      path = "sys.fs_free"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "sys.fs_free"
+    #   type = "int"
 
-    [[inputs.http.json_v2.field]]
-      path = "wifi.rssi"
-      type = "int"
+    # [[inputs.http.json_v2.field]]
+    #   path = "wifi.rssi"
+    #   type = "int"
